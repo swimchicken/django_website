@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>逢甲shopping Web</title>
+
+    <!--自己的css-->
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!--swiper.css設計-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+    <!--icon fontsome.css-->
+
+    <script src="https://kit.fontawesome.com/a3c608bb80.js" crossorigin="anonymous"></script>
+
+    <!--font-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500&family=Nunito&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images\shop__icon.ico" type="images/web_icon2.png">
+
+</head>
+<body>
+
+    <!--導覽列設計-->
+    <section id="header" class="header">
+        <a href="#" class="logo"><i class="fa-solid fa-shop"></i>S.C</a>
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#category">hot</a>
+            <a href="#pramotion">type</a>
+            <a href="#shop">shop</a>
+        </nav>
+
+        <div class="icon">
+            <a href="#" class="fa-solid fa-user"></a>
+            <a href="#" class="fa-solid fa-cart-shopping" id="cart-button"></a>
+            <a href="#" class="fa-solid fa-moon" id="darkmode-icon"></a>
+        </div>
+
+
+        <!--django內容-->
+        <div id="cart-popup">
+            <i class="fa-solid fa-trash" id="dicon"></i>
+            <!-- 這裡放置購物車內容和結帳按鈕 -->
+        </div>
+
+    </section>
+
+    <!--Gaze Cueing-->
+
+    <section class="home" id="home">
+        <!--第一部分-->
+        <div class="slide active" id="main_img" style="background-image: url({% static '/images/TriplePOG.png' %}) ;background-size:cover; background-position:center;">
+            <div class="content">
+                <span>滿足你的日常所需</span>
+                <h3>逢甲商城 - 與時尚相遇，享受購物新潮流</h3>
+                <a href="#shop" class="btn">read more</a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!--shop item(view)-->
+    <section class="category" id="category">
+
+        <h2 class="heading"><span>super hot</span></h2>
+
+
+        <div class="box-container">
+            <a href="#shop" class="box">
+                <img src="{% static '/images/1.png' %}">
+                <h1>打卡鞋</h1>
+            </a>
+            <a href="#shop" class="box">
+                <img src="{% static '/images/2.png' %}">
+                <h1>岡本壯陽藥</h1>
+            </a>
+            <a href="#shop" class="box">
+                <img src="{% static '/images/3.png' %}">
+                <h1>薪水小偷</h1>
+            </a>
+            <a href="#shop" class="box">
+                <img src="{% static '/images/5.png' %}">
+                <h1>教授看不見你墨鏡</h1>
+            </a>
+            
+
+        </div>
+
+    </section>
+
+
+     <!--shop type-->
+    <section class="pramotion" id="pramotion">
+        <h2 class="heading"><span>shop type</span></h2>
+        <div class="box-container">
+            <div class="collection-card" style="background-image: url({% static '/images/MJ.png' %});opacity: 0.7; ">
+                <h1></h1>
+                <a href="#shop" class="btn">Explore More<i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="collection-card" style="background-image: url({% static '/images/RR.png' %});opacity: 0.7;">
+                <h1></h1>
+                <a href="#shop" class="btn">Explore More<i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="collection-card" style="background-image: url({% static '/images/fu6w8.png' %});opacity: 0.7;">
+                <h1></h1>
+                <a href="#shop" class="btn">Explore More<i class="fas fa-arrow-right"></i></a>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!--shop item-->
+
+    <section class="shop" id="shop">
+        <h2 class="heading">近期  <span>上架</span></h2>
+
+        <div class="box-container">
+            <!--商品1-->
+            <div class="box">
+                <img src="{% static '/images/1.png' %}">
+                <div class="content">
+                    <h3>打卡鞋</h3>
+                    <div class="price">$20<span>$30</span></div>
+                    <a class="btn">Add to Cart</a>
+
+                </div>
+            </div>
+            <!--商品2-->
+            <div class="box">
+                <img src="{% static '/images/2.png' %}">
+                <div class="content">
+                    <h3>岡本壯陽藥</h3>
+                    <div class="price">$69<span>$999</span></div>
+                    <a  class="btn">Add to Cart</a>
+
+                </div>
+            </div>
+            <!--商品3-->
+            <div class="box">
+                <img src="{% static '/images/3.png' %}">
+
+                <div class="content">
+                    <h3>薪水小偷</h3>
+                    <div class="price">$99<span>$3</span></div>
+                    <a  class="btn">Add to Cart</a>
+
+                </div>
+            </div>
+            <!--商品4-->
+            <div class="box">
+                <img src="{% static '/images/4.png' %}">
+
+                <div class="content">
+                    <h3>教授求學分神水</h3>
+                    <div class="price">$9<span>$25</span></div>
+                    <a  class="btn">Add to Cart</a>
+
+                </div>
+            </div>
+
+            <!--商品5-->
+            <div class="box">
+                <img src="{% static '/images/5.png' %}">
+
+                <div class="content">
+                    <h3>教授看不見你墨鏡</h3>
+                    <div class="price">$22<span>$58</span></div>
+                    <a  class="btn">Add to Cart</a>
+
+                </div>
+            </div>
+
+            <!--商品6-->
+            <div class="box">
+                <img src="{% static '/images/6.png' %}">
+
+                <div class="content">
+                    <h3>3D假髮</h3>
+                    <div class="price">$30<span>$87</span></div>
+                    <a  class="btn">Add to Cart</a>
+
+                </div>
+            </div>
+
+            <!--商品7-->
+            <div class="box">
+                <img src="{% static '/images/7.png' %}">
+
+                <div class="content">
+                    <h3>防戀人墨鏡</h3>
+                    <div class="price">$20<span>$30</span></div>
+                    <a  class="btn">Add to Cart</a>
+
+                </div>
+            </div>
+
+            <!--商品8-->
+            <div class="box">
+                <img src="{% static '/images/8.png' %}">
+                <div class="content">
+                    <h3>台積電面試鞋</h3>
+                    <div class="price">$64<span>$1450</span></div>
+                    <a  class="btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static '/images/9.png' %}">
+                <div class="content">
+                    <h3>黃仁勳衣服</h3>
+                    <div class="price">$1000<span>$9999</span></div>
+                    <a  class="btn">Add to Cart</a>
+                </div>
+            </div>
+            <div class="box">
+                <img src="{% static '/images/10.png' %}">
+                <div class="content">
+                    <h3>露營飲水專用</h3>
+                    <div class="price">$64<span>$1450</span></div>
+                    <a  class="btn">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--future shop item view-->
+    <section class="section insta-post">
+
+        <h2 class="heading">未來 <span>上架</span></h2>
+        <ul class="insta-post-list has-scrollbar">
+            <li class="insta-post-item">
+                <img src="{% static '/images/001.png' %}" class="insta-post-banner image-contain" alt="" width="100" height="100" loading="lazy">
+                <a href="#" class="insta-post-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+            </li>
+            <li class="insta-post-item">
+                <img src="{% static '/images/002.png' %}" class="insta-post-banner image-contain" alt="" width="100" height="100" loading="lazy">
+                <a href="#" class="insta-post-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+            </li>
+            <li class="insta-post-item">
+                <img src="{% static '/images/003.png' %}" class="insta-post-banner image-contain" alt="" width="100" height="100" loading="lazy">
+                <a href="#" class="insta-post-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+            </li>
+            <li class="insta-post-item">
+                <img src="{% static '/images/004.png' %}" class="insta-post-banner image-contain" alt="" width="100" height="100" loading="lazy">
+                <a href="#" class="insta-post-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+            </li>
+            <li class="insta-post-item">
+                <img src="{% static '/images/005.png' %}" class="insta-post-banner image-contain" alt="" width="100" height="100" loading="lazy">
+                <a href="#" class="insta-post-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+
+            </li>
+        </ul>
+
+    </section>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p>Copyright &copy; 2023 by Swimchicken | All Right Reserved</p>
+        </div>
+        <div class="footer-iconTop">
+            <a href="#home"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+
+    </footer>
+
+    <script src="{% static 'js/index.js' %}"></script>
+
+    
+</body>
+</html>
