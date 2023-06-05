@@ -42,7 +42,10 @@
 
         <div class="icon">
             <a href="#" class="fa-solid fa-user"></a>
-            <a href="#" class="fa-solid fa-cart-shopping" id="cart-button"></a>
+            <a href="#" class="fa-solid fa-cart-shopping" id="cart-button">
+                <span id="cart-count">0</span>
+            </a>
+            <a href="#" class="fa-solid fa-trash" id="clear-cart-button" onclick="clearCart()"></a><!-- 多增加清空購物車按鈕 -->
             <a href="#" class="fa-solid fa-moon" id="darkmode-icon"></a>
         </div>
 
@@ -50,7 +53,7 @@
         <!--django內容-->
         <div id="cart-popup">
             <i class="fa-solid fa-trash" id="dicon"></i>
-            <!-- 這裡放置購物車內容和結帳按鈕 -->
+            <!-- 這裡放置購物車項目 -->
         </div>
 
     </section>
@@ -133,7 +136,7 @@
                 <div class="content">
                     <h3>打卡鞋</h3>
                     <div class="price">$20<span>$30</span></div>
-                    <a class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('打卡鞋')">Add to Cart</a>
 
                 </div>
             </div>
@@ -143,7 +146,7 @@
                 <div class="content">
                     <h3>岡本壯陽藥</h3>
                     <div class="price">$69<span>$999</span></div>
-                    <a  class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('岡本壯陽藥')">Add to Cart</a>
 
                 </div>
             </div>
@@ -154,7 +157,7 @@
                 <div class="content">
                     <h3>薪水小偷</h3>
                     <div class="price">$99<span>$3</span></div>
-                    <a  class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('薪水小偷')">Add to Cart</a>
 
                 </div>
             </div>
@@ -165,7 +168,7 @@
                 <div class="content">
                     <h3>教授求學分神水</h3>
                     <div class="price">$9<span>$25</span></div>
-                    <a  class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('教授求學分神水')">Add to Cart</a>
 
                 </div>
             </div>
@@ -177,7 +180,7 @@
                 <div class="content">
                     <h3>教授看不見你墨鏡</h3>
                     <div class="price">$22<span>$58</span></div>
-                    <a  class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('教授看不見你墨鏡')">Add to Cart</a>
 
                 </div>
             </div>
@@ -189,7 +192,7 @@
                 <div class="content">
                     <h3>3D假髮</h3>
                     <div class="price">$30<span>$87</span></div>
-                    <a  class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('3D假髮')">Add to Cart</a>
 
                 </div>
             </div>
@@ -201,7 +204,7 @@
                 <div class="content">
                     <h3>防戀人墨鏡</h3>
                     <div class="price">$20<span>$30</span></div>
-                    <a  class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('防戀人墨鏡')">Add to Cart</a>
 
                 </div>
             </div>
@@ -212,7 +215,7 @@
                 <div class="content">
                     <h3>台積電面試鞋</h3>
                     <div class="price">$64<span>$1450</span></div>
-                    <a  class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('台積電面試鞋')">Add to Cart</a>
                 </div>
             </div>
             <div class="box">
@@ -220,7 +223,7 @@
                 <div class="content">
                     <h3>黃仁勳衣服</h3>
                     <div class="price">$1000<span>$9999</span></div>
-                    <a  class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('黃仁勳衣服')">Add to Cart</a>
                 </div>
             </div>
             <div class="box">
@@ -228,7 +231,7 @@
                 <div class="content">
                     <h3>露營飲水專用</h3>
                     <div class="price">$64<span>$1450</span></div>
-                    <a  class="btn">Add to Cart</a>
+                    <a class="btn add-to-cart-btn" onclick="addToCart('露營飲水專用')">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -290,6 +293,119 @@
     </footer>
 
     <script src="{% static 'js/index.js' %}"></script>
+
+
+    <script>//這個script處理購物車icon旁邊的數字
+
+        // 購物車數量的全局變量
+        let cartQuantity = 0;
+    
+        // 選取所有的 "Add to Cart" 按鈕
+        const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+    
+        // 遍歷所有按鈕，為它們綁定點擊事件監聽器
+        addToCartButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                // 更新購物車數量
+                updateCartQuantity();
+            });
+        });
+    
+        // 更新購物車數量的函數
+        function updateCartQuantity() {
+            // 根據您的邏輯更新購物車數量
+            cartQuantity += 1;
+    
+            // 選取購物車數量顯示的元素
+            const cartQuantityElement = document.getElementById('cart-button');
+    
+            // 更新購物車數量的顯示
+            cartQuantityElement.innerText = cartQuantity;
+    
+            // 選取購物車內容容器
+            const cartContentElement = document.getElementById('cart-content');
+    
+            // 創建顯示數量的元素
+            const quantityElement = document.createElement('span');
+            quantityElement.innerText = cartQuantity;
+    
+            // 清空購物車內容容器
+            cartContentElement.innerHTML = '';
+    
+            // 將數量元素添加到購物車內容容器中
+            cartContentElement.appendChild(quantityElement);
+        }
+    </script>
+
+    <script>//這個script處理購物遮裡面的內容
+
+        // 定義一個空陣列來存儲購物車項目
+        var cartItems = [];
+
+        // 在點選 "Add to Cart" 按鈕時執行的函式
+        function addToCart(name) {
+            // 在這裡添加相應的邏輯來獲取商品資訊
+
+            // 檢查商品是否已存在於購物車中
+            var existingItem = cartItems.find(function(item) {
+                return item.name === name;
+            });
+
+            if (existingItem) {
+                // 商品已存在於購物車中，將數量加一
+                existingItem.quantity += 1;
+            } else {
+                // 商品尚未存在於購物車中，創建一個新的商品對象
+                var newItem = {
+                    name: name,
+                    price: 20,
+                    quantity: 1
+                };
+                
+                // 將新的商品對象添加到購物車陣列中
+                cartItems.push(newItem);
+            }
+
+            // 更新購物車項目的顯示
+            updateCartItems();
+        }
+
+        // 更新購物車項目的函式
+        function updateCartItems() {
+            // 獲取購物車項目容器的元素
+            var cartContainer = document.getElementById("cart-popup");
+
+            // 清空購物車項目容器
+            cartContainer.innerHTML = "";
+
+            // 遍歷購物車陣列，創建並添加每個項目的元素
+            for (var i = 0; i < cartItems.length; i++) {
+                var item = cartItems[i];
+
+                // 創建項目元素
+                var itemElement = document.createElement("div");
+                itemElement.innerHTML = item.name + " - $" + item.price + " x " + item.quantity;
+
+                // 將項目元素添加到購物車項目容器中
+                cartContainer.appendChild(itemElement);
+            }
+        }
+        function clearCart() {
+            cartItems = [];
+
+            // 更新購物車項目的顯示
+            updateCartItems();
+
+            // 重置購物車數量為0
+            cartQuantity = 0;
+
+            // 選取購物車數量顯示的元素
+            const cartQuantityElement = document.getElementById('cart-button');
+
+            // 更新購物車數量的顯示為0
+            cartQuantityElement.innerText = cartQuantity;
+        }
+    </script>
 
     
 </body>
