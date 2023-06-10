@@ -20,6 +20,9 @@
             <div class="recover">
                 <a href="#">Forgot password?</a>
             </div>
+            {% if wrong_password %}
+                <p style="color: red;">Username or Password is incorrect</p>
+            {% endif %}
             <button>Login</button>
             <div class="member">
                 沒有帳號?<a href="{% url 'signup' %}">Register</a>

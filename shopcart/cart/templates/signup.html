@@ -22,6 +22,9 @@
                 <input type="checkbox" id="checkbox">
                 <label for="checkbox">I agree to these <a href="#"> credit</a></label>
             </div>
+            {% if wrong_password %}
+                <p style="color: red;">rePassword is incorrect</p>
+            {% endif %}
             <button>Sign up</button>
             <div class="member">
                 已經有帳號?<a href="{% url 'login' %}">Login here</a>

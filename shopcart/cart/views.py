@@ -25,7 +25,8 @@ def SigupPage(request):
         p1 = request.POST.get('password')
         p2 = request.POST.get('re_password')
         if p1 != p2:
-            return HttpResponse("Your not ture")
+            wrong_password = True
+            return render(request, "signup.html", {'wrong_password': wrong_password})
         else:
             my_user = User.objects.create_user(uname, ename, p1)
             my_user.save()
@@ -43,5 +44,6 @@ def LoginPage(request):
             login(request, user)
             return redirect('main')
         else:
-            return HttpResponse("Username or Password is incorrect")
+            wrong_password = True
+            return render(request, "login.html", {'wrong_password': wrong_password})
     return render(request, "login.html")
