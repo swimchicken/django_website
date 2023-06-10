@@ -45,15 +45,28 @@
             <a href="#" class="fa-solid fa-cart-shopping" id="cart-button">
                 <span id="cart-count">0</span>
             </a>
-            <a href="#" class="fa-solid fa-trash" id="clear-cart-button" onclick="clearCart()"></a><!-- 多增加清空購物車按鈕 -->
+            <!-- <a href="#" class="fa-solid fa-trash" id="clear-cart-button" onclick="clearCart()"></a>多增加清空購物車按鈕 -->
             <a href="#" class="fa-solid fa-moon" id="darkmode-icon"></a>
         </div>
 
 
         <!--django內容-->
         <div id="cart-popup">
-            <i class="fa-solid fa-trash" id="dicon"></i>
-            <!-- 這裡放置購物車項目 -->
+
+            <!-- 這是結帳按鈕 -->
+            <div class="checkout" id="checkout-cart-button">
+                <button style="cursor: pointer;">結帳</button>
+            </div>
+
+            <!-- 我在裡面也加上了清空功能 -->
+            <div class="fa-solid fa-trash" id="clear-cart-button">
+                <button style="cursor: pointer;" onclick="clearCart()">清空購物車</button>
+            </div>
+
+            <div id="cart-item">
+                <!-- 這裡放置購物車項目 -->
+            </div>
+
         </div>
 
     </section>
@@ -373,7 +386,7 @@
         // 更新購物車項目的函式
         function updateCartItems() {
             // 獲取購物車項目容器的元素
-            var cartContainer = document.getElementById("cart-popup");
+            var cartContainer = document.getElementById("cart-item");
 
             // 清空購物車項目容器
             cartContainer.innerHTML = "";
