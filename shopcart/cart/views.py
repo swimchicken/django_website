@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login,logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.models import User
@@ -10,6 +10,11 @@ from django.contrib.auth.models import User
 @login_required(login_url='login')
 def index_view(request):
     template = loader.get_template('index.html')
+    return HttpResponse(template.render())
+
+
+def shop(request):
+    template = loader.get_template('shop.html')
     return HttpResponse(template.render())
 
 
