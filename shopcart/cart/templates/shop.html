@@ -9,7 +9,7 @@
 
     <!--自己的css-->
 
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style3.css' %}">
 
     <!--swiper.css設計-->
 
@@ -29,10 +29,30 @@
 </head>
 <body>
 
+    <!--導覽列設計-->
+    <section id="header" class="header">
+        <a href="#" class="logo"><i class="fa-solid fa-shop"></i>S.C</a>
+        <nav class="navbar">
+            <a href="{% url 'main' %}">回首頁繼續購物</a>
+        </nav>
+
+        <div class="icon">
+            <a href="#" class="fa-solid fa-moon" id="darkmode-icon"></a>
+        </div>
+
+
+        <!--django內容-->
+        <div id="cart-popup">
+            <i class="fa-solid fa-trash" id="dicon"></i>
+            <!-- 這裡放置購物車內容和結帳按鈕 -->
+        </div>
+
+    </section>
+
 
     <!--user dataset-->
     <section class="contect" id="contect">
-        <h2 class="heading">Contect <span>Me!</span></h2>
+        <h2 class="heading">送出 <span>訂單!</span></h2>
         
         <form action="#">
             <div class="input-index">
@@ -44,21 +64,14 @@
                 <input type="text" placeholder="Email Subject">
             </div>
             <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+
+            <!--總價呈現-->
             <input type="submit" value="Send Message" class="btn">
 
         </form>
     </section>
 
-    <!--這裡請幫我輸入總價跟上一步的按鈕以及送出的按鈕-->
-    <section>
-    </section>
 
-    
-
-
-     
-
-    
     
 
     <footer class="footer">
@@ -70,6 +83,8 @@
         </div>
 
     </footer>
+
+
 
 
 

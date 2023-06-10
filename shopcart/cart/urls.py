@@ -9,5 +9,5 @@ urlpatterns = [
     path('',views.SigupPage,name="signup"),
     path('login/', views.LoginPage, name='login'),
     path('logout/',views.LogoutPage, name='logout'),
-    path('shop/',views.shop,name='shop')
+    path('shop/',views.shop,name='shop'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
