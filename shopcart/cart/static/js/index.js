@@ -54,6 +54,7 @@ document.addEventListener("click", function(event) {
 
 
 
+
 /* ajax 後端傳輸 */
 
 

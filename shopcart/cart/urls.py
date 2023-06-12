@@ -11,4 +11,5 @@ urlpatterns = [
     path('logout/',views.LogoutPage, name='logout'),
     path('shop/',views.shop,name='shop'),
     path('add-to-cart/',views.add_to_cart,name='add-to-cart'),
+    path('clear-database/', views.clear_database, name='clear_database'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

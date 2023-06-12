@@ -72,7 +72,7 @@
 
 
             <!--總價呈現-->
-            <input type="submit" value="Send Message" class="btn">
+            <input type="button" value="Send Message" class="btn" onclick="goToShop()" id="clearButton">
 
         </form>
     </section>
@@ -89,6 +89,30 @@
         </div>
 
     </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function goToShop() {
+            var url = "{% url 'main' %}";
+            window.location.href = url;
+        }
+
+        $(document).ready(function() {
+          $('#clearButton').click(function() {
+            $.ajax({
+              url: '/clear-database/',
+              type: 'POST',
+              success: function(response) {
+                alert('資料庫已成功清空！');
+              },
+              error: function(xhr) {
+                alert('清空資料庫時發生錯誤！');
+              }
+            });
+          });
+        });
+    </script>
 
     <script src="{% static 'js/index.js' %}"></script>
 

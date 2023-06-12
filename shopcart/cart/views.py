@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from .models import shop_item
+from django.db import connection
 import logging
 
 from django.views.decorators.csrf import csrf_exempt
@@ -24,6 +25,12 @@ def add_to_cart(request):
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
 
+
+@csrf_exempt
+def clear_database(request):
+    if request.method == 'POST':
+        shop_item.objects.all().delete()
+        return render(request, 'index.html')
 
 
 @login_required(login_url='login')
