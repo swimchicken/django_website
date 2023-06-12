@@ -25,16 +25,6 @@ def add_to_cart(request):
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
 
 
-def show_cart(request):
-    total_item = list(shop_item.objects.all())
-    template = loader.get_template("index.html")
-    context = {
-        'total_item': total_item
-    }
-
-    print(context)
-    return HttpResponse(template.render(context, request))
-
 
 @login_required(login_url='login')
 def index_view(request):
@@ -43,8 +33,13 @@ def index_view(request):
 
 
 def shop(request):
-    template = loader.get_template('shop.html')
-    return HttpResponse(template.render())
+    total_item = list(shop_item.objects.all())
+    template = loader.get_template("shop.html")
+    context = {
+        'total_item': total_item
+    }
+    print(context)
+    return HttpResponse(template.render(context, request))
 
 
 def LogoutPage(request):

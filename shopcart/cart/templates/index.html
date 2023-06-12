@@ -42,37 +42,13 @@
 
         <div class="icon">
             <a href="{% url 'logout' %}" class="fa-solid fa-right-from-bracket"></a>
-            <a href="" class="fa-solid fa-cart-shopping" id="cart-button">
-                <span id="cart-count">0</span>
-            </a>
+            <a href="{% url 'shop' %}" class="fa-solid fa-cart-shopping"></a>
             <!-- <a href="#" class="fa-solid fa-trash" id="clear-cart-button" onclick="clearCart()"></a>多增加清空購物車按鈕 -->
             <a href="" class="fa-solid fa-moon" id="darkmode-icon"></a>
         </div>
 
 
-        <!--django內容-->
-        <div id="cart-popup">
 
-            <!-- 這裡放置購物車項目 -->
-            <div id="cart-item">
-            {% for x in total_item %}
-                <h1>{{ x.name }} {{ x.money }}</h1>
-            {% endfor %}
-            </div>
-
-            <!-- 這是結帳按鈕 -->
-            <div class="checkout" id="checkout-cart-button">
-                <a style="cursor: pointer;" href="{% url 'shop' %}">結帳</a>
-            </div>
-
-            <!-- 我在裡面也加上了清空功能 -->
-            <div class="fa-solid fa-trash" id="clear-cart-button">
-                <button style="cursor: pointer;" onclick="clearCart()">清空購物車</button>
-            </div>
-
-
-
-        </div>
 
     </section>
 
