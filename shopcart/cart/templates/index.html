@@ -42,16 +42,23 @@
 
         <div class="icon">
             <a href="{% url 'logout' %}" class="fa-solid fa-right-from-bracket"></a>
-            <a href="#" class="fa-solid fa-cart-shopping" id="cart-button">
+            <a href="" class="fa-solid fa-cart-shopping" id="cart-button">
                 <span id="cart-count">0</span>
             </a>
             <!-- <a href="#" class="fa-solid fa-trash" id="clear-cart-button" onclick="clearCart()"></a>多增加清空購物車按鈕 -->
-            <a href="#" class="fa-solid fa-moon" id="darkmode-icon"></a>
+            <a href="" class="fa-solid fa-moon" id="darkmode-icon"></a>
         </div>
 
 
         <!--django內容-->
         <div id="cart-popup">
+
+            <!-- 這裡放置購物車項目 -->
+            <div id="cart-item">
+            {% for x in total_item %}
+                <h1>{{ x.name }} {{ x.money }}</h1>
+            {% endfor %}
+            </div>
 
             <!-- 這是結帳按鈕 -->
             <div class="checkout" id="checkout-cart-button">
@@ -63,9 +70,7 @@
                 <button style="cursor: pointer;" onclick="clearCart()">清空購物車</button>
             </div>
 
-            <div id="cart-item">
-                <!-- 這裡放置購物車項目 -->
-            </div>
+
 
         </div>
 
@@ -149,7 +154,7 @@
                 <div class="content">
                     <h3>打卡鞋</h3>
                     <div class="price">$20<span>$30</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('打卡鞋')">Add to Cart</a>
+                    <a class="btn add-to-cart-btn add-to-cart" data-product-name="打卡鞋" data-price="20.00">Add to Cart</a>
 
                 </div>
             </div>
@@ -159,8 +164,7 @@
                 <div class="content">
                     <h3>岡本壯陽藥</h3>
                     <div class="price">$69<span>$999</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('岡本壯陽藥')">Add to Cart</a>
-
+                    <a class="btn add-to-cart-btn add-to-cart"  data-product-name="岡本壯陽藥" data-price="69.00">Add to Cart</a>
                 </div>
             </div>
             <!--商品3-->
@@ -170,7 +174,7 @@
                 <div class="content">
                     <h3>薪水小偷</h3>
                     <div class="price">$99<span>$3</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('薪水小偷')">Add to Cart</a>
+                    <a class="btn add-to-cart-btn add-to-cart" data-product-name="薪水小偷" data-price="99.00">Add to Cart</a>
 
                 </div>
             </div>
@@ -181,7 +185,7 @@
                 <div class="content">
                     <h3>教授求學分神水</h3>
                     <div class="price">$9<span>$25</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('教授求學分神水')">Add to Cart</a>
+                    <a class="btn add-to-cart-btn add-to-cart"  data-product-name="教授求學分神水" data-price="9.00">Add to Cart</a>
 
                 </div>
             </div>
@@ -193,7 +197,7 @@
                 <div class="content">
                     <h3>教授看不見你墨鏡</h3>
                     <div class="price">$22<span>$58</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('教授看不見你墨鏡')">Add to Cart</a>
+                    <a class="btn add-to-cart-btn add-to-cart"  data-product-name="教授看不見你墨鏡" data-price="22.00">Add to Cart</a>
 
                 </div>
             </div>
@@ -205,7 +209,7 @@
                 <div class="content">
                     <h3>3D假髮</h3>
                     <div class="price">$30<span>$87</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('3D假髮')">Add to Cart</a>
+                    <a class="btn add-to-cart-btn add-to-cart"  data-product-name="3D假髮" data-price="30.00">Add to Cart</a>
 
                 </div>
             </div>
@@ -217,7 +221,7 @@
                 <div class="content">
                     <h3>防戀人墨鏡</h3>
                     <div class="price">$20<span>$30</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('防戀人墨鏡')">Add to Cart</a>
+                    <a class="btn add-to-cart-btn add-to-cart"  data-product-name="防戀人墨鏡" data-price="20.00">Add to Cart</a>
 
                 </div>
             </div>
@@ -228,7 +232,7 @@
                 <div class="content">
                     <h3>台積電面試鞋</h3>
                     <div class="price">$64<span>$1450</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('台積電面試鞋')">Add to Cart</a>
+                    <a class="btn add-to-cart-btn add-to-cart"  data-product-name="台積電面試鞋" data-price="64.00">Add to Cart</a>
                 </div>
             </div>
             <div class="box">
@@ -236,7 +240,7 @@
                 <div class="content">
                     <h3>黃仁勳衣服</h3>
                     <div class="price">$1000<span>$9999</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('黃仁勳衣服')">Add to Cart</a>
+                    <a class="btn add-to-cart-btn add-to-cart" data-product-name="黃仁勳衣服" data-price="1000.00">Add to Cart</a>
                 </div>
             </div>
             <div class="box">
@@ -244,7 +248,7 @@
                 <div class="content">
                     <h3>露營飲水專用</h3>
                     <div class="price">$64<span>$1450</span></div>
-                    <a class="btn add-to-cart-btn" onclick="addToCart('露營飲水專用')">Add to Cart</a>
+                    <a class="btn add-to-cart-btn add-to-cart" data-product-name="露營飲水專用" data-price="64.00">Add to Cart</a>
                 </div>
             </div>
         </div>
@@ -307,9 +311,50 @@
 
     </footer>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            $('.add-to-cart').click(function(event) {
+                event.preventDefault();
+
+                var productName = $(this).data('product-name');
+                var price = $(this).data('price');
+
+                console.log(productName, price);
+                addToCart(productName, price);
+            });
+        });
+
+
+
+        function addToCart(productName,money){
+            $.ajax({
+                 url: '/add-to-cart/',
+                 type: 'POST',
+                 data: {
+                    'product_name': productName,
+                    'money': money
+                 },
+                 dataType: 'json',
+                  success: function (response) {
+
+                     console.log('Success:', response);
+                     alert('Product added to cart successfully.');
+                  },
+                  error: function (xhr, textStatus, errorThrown) {
+                     console.log('Error:', errorThrown);
+                     alert('Failed to add product to cart.');
+                  }
+            });
+        }
+    </script>
+
+
     <script src="{% static 'js/index.js' %}"></script>
 
 
+    <!--
     <script>//這個script處理購物車icon旁邊的數字
 
         // 購物車數量的全局變量
@@ -421,6 +466,8 @@
             cartQuantityElement.innerText = cartQuantity;
         }
     </script>
+
+    -->
 
     
 </body>

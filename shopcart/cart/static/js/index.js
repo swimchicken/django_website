@@ -50,3 +50,50 @@ document.addEventListener("click", function(event) {
     isCartOpen = false;
   }
 });
+
+
+
+
+/* ajax 後端傳輸 */
+
+
+/*
+
+$(document).ready(function() {
+    // 綁定每個"add to cart"按鈕的點擊事件
+    $('.add-to-cart').click(function(event) {
+        event.preventDefault(); // 防止點擊後跳轉到其他頁面
+
+        var productName = $(this).data('product-name');
+        var price = $(this).data('price');
+
+        console.log(productName, price);
+        addToCart(productName, price);
+    });
+});
+
+
+
+function addToCart(productName,money){
+    $.ajax({
+         url: '/add-to-cart/',
+         type: 'POST',
+         data: {
+            'product_name': productName,
+            'money': money
+         },
+         dataType: 'json',
+          success: function (response) {
+             // 在請求成功的情況下執行的代碼
+             console.log('Success:', response);
+             alert('Product added to cart successfully.');
+          },
+          error: function (xhr, textStatus, errorThrown) {
+             // 在請求失敗的情況下執行的代碼
+             console.log('Error:', errorThrown);
+             alert('Failed to add product to cart.');
+          }
+    });
+}
+
+*/

@@ -3,8 +3,37 @@ from django.template import loader
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-
+from django.http import JsonResponse
 from django.contrib.auth.models import User
+from .models import shop_item
+import logging
+
+from django.views.decorators.csrf import csrf_exempt
+
+
+@csrf_exempt
+def add_to_cart(request):
+    if request.method == 'POST':
+        product_name = request.POST.get('product_name')
+        money = request.POST.get('money')
+
+        print(product_name, money)
+        cart_item = shop_item(name=product_name, money=money)
+        cart_item.save()
+        return JsonResponse({'status': 'success', 'message': 'Item added to cart.'})
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
+
+
+def show_cart(request):
+    total_item = list(shop_item.objects.all())
+    template = loader.get_template("index.html")
+    context = {
+        'total_item': total_item
+    }
+
+    print(context)
+    return HttpResponse(template.render(context, request))
 
 
 @login_required(login_url='login')
