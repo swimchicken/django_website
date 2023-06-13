@@ -65,10 +65,31 @@
             </div>
             <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
 
+            <div class="line"></div>
 
-            {% for x in total_item %}
-                <h3 class="dsadsa">{{ x.name }} - {{ x.money }}</h3>
-            {% endfor %}
+            <h2 class="heading">商品 <span>細項!</span></h2>
+
+            <div class="show_item">
+              {% for x in total_item %}
+                <div class="item">
+                  <h3 class="shop_name">{{ x.name }}</h3>
+                  <h3 class="shop_money">{{ x.money }}</h3>
+                </div>
+              {% endfor %}
+            </div>
+
+            <div class="line"></div>
+
+
+            <div class="show_item">
+                <div class="item">
+                    <h3 class="shop_name">總價</h3>
+                    <h3 class="shop_money">{{ total_price }}</h3>
+                </div>
+            </div>
+
+
+
 
 
             <!--總價呈現-->

@@ -42,8 +42,11 @@ def index_view(request):
 def shop(request):
     total_item = list(shop_item.objects.all())
     template = loader.get_template("shop.html")
+
+    total_price = sum(item.money for item in total_item)
     context = {
-        'total_item': total_item
+        'total_item': total_item,
+        'total_price': total_price
     }
     print(context)
     return HttpResponse(template.render(context, request))
